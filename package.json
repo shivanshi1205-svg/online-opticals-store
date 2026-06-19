@@ -10,7 +10,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "npm run seed --prefix backend",
     "data:destroy": "npm run data:destroy --prefix backend",
-    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
+    "build": "npm install --prefix backend && npm install --include=dev --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Antigravity",
   "license": "ISC",
