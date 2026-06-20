@@ -17,6 +17,7 @@ import Profile from './pages/Profile';
 import Cart from './pages/Cart';
 import BookEyeTest from './pages/BookEyeTest';
 import useThemeStore from './store/useThemeStore';
+import AIAssistant from './components/AIAssistant';
 
 function App() {
   const { initTheme } = useThemeStore();
@@ -54,6 +55,7 @@ function App() {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/book-eye-test" element={<BookEyeTest />} />
               </Routes>
+              <AIAssistant />
             </main>
             <Footer />
           </>

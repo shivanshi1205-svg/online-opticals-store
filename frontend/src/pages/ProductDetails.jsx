@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import useProductStore from '../store/useProductStore';
+import axiosInstance from '../api/axiosInstance';
 import { ShoppingCart, Phone, MessageCircle, ArrowLeft, ShieldCheck, Truck, RotateCcw } from 'lucide-react';
 
 const ProductDetails = () => {
@@ -17,11 +18,9 @@ const ProductDetails = () => {
 
   useEffect(() => {
     if (product && product.category) {
-      import('axios').then(({ default: axios }) => {
-        const categoryId = product.category._id || product.category;
-        axios.get(`/api/products?category=${categoryId}`).then(res => {
-          setRelatedProducts(res.data.products.filter(p => p._id !== product._id).slice(0, 4));
-        });
+      const categoryId = product.category._id || product.category;
+      axiosInstance.get(`/api/products?category=${categoryId}`).then(res => {
+        setRelatedProducts(res.data.products.filter(p => p._id !== product._id).slice(0, 4));
       });
     }
   }, [product]);

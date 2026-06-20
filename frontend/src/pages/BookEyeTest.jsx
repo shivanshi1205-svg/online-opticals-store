@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 import useAuthStore from '../store/useAuthStore';
 import { Calendar, Clock, MapPin, Eye } from 'lucide-react';
 
@@ -24,7 +24,7 @@ const BookEyeTest = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post('/api/appointments', formData);
+      await axiosInstance.post('/api/appointments', formData);
       setSuccess(true);
       setLoading(false);
     } catch (error) {

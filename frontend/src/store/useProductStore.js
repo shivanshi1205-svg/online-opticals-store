@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 
 const useProductStore = create((set) => ({
   products: [],
@@ -18,7 +18,7 @@ const useProductStore = create((set) => ({
       if (filters.sort) queryStr += `&sort=${filters.sort}`;
       // Add other filters as needed
 
-      const { data } = await axios.get(queryStr);
+      const { data } = await axiosInstance.get(queryStr);
       set({
         products: data.products,
         pages: data.pages,
@@ -36,7 +36,7 @@ const useProductStore = create((set) => ({
   fetchProductDetails: async (id) => {
     set({ loading: true, error: null });
     try {
-      const { data } = await axios.get(`/api/products/${id}`);
+      const { data } = await axiosInstance.get(`/api/products/${id}`);
       set({ product: data, loading: false });
     } catch (error) {
       set({
