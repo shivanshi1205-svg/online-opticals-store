@@ -123,9 +123,9 @@ const Home = () => {
       </div>
 
       {/* Services Categories */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-[#121212]">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-primary mb-12">Our Categories</h2>
+          <h2 className="text-3xl font-bold text-center text-primary dark:text-secondary mb-12">Our Categories</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { name: 'Eyeglasses', img: 'https://images.unsplash.com/photo-1509695507497-903c140c43b0?auto=format&fit=crop&q=80&w=400', link: '/eyeglasses' },
@@ -136,13 +136,13 @@ const Home = () => {
               <Link to={cat.link} key={index}>
                 <motion.div 
                   whileHover={{ y: -10 }}
-                  className="bg-white rounded-xl shadow-lg p-6 text-center cursor-pointer border border-gray-100 hover:border-secondary transition-all h-full"
+                  className="bg-white dark:bg-[#1a1a1a] rounded-xl shadow-lg p-6 text-center cursor-pointer border border-gray-100 dark:border-[#333] hover:border-secondary dark:hover:border-secondary transition-all h-full group"
                 >
-                  <div className="w-24 h-24 mx-auto mb-4 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden border-2 border-gray-100">
-                    <img src={cat.img} alt={cat.name} className="w-full h-full object-cover" />
+                  <div className="w-24 h-24 mx-auto mb-4 bg-gray-200 dark:bg-black rounded-full flex items-center justify-center overflow-hidden border-2 border-gray-100 dark:border-[#333]">
+                    <img src={cat.img} alt={cat.name} className="w-full h-full object-cover mix-blend-multiply dark:mix-blend-normal" />
                   </div>
-                  <h3 className="font-semibold text-lg text-primary">{cat.name}</h3>
-                  <p className="text-sm text-gray-500 mt-2 hover:text-secondary">Explore &rarr;</p>
+                  <h3 className="font-semibold text-lg text-primary dark:text-white group-hover:text-secondary transition-colors">{cat.name}</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 group-hover:text-secondary">Explore &rarr;</p>
                 </motion.div>
               </Link>
             ))}
@@ -151,11 +151,11 @@ const Home = () => {
       </section>
 
       {/* Shop by Frame Shape */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-white dark:bg-[#0a0a0a]">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-end mb-8">
-            <h2 className="text-2xl font-bold text-dark">Shop by Frame Shape</h2>
-            <Link to="/shop" className="text-secondary font-semibold flex items-center hover:text-primary transition-colors">
+            <h2 className="text-2xl font-bold text-dark dark:text-white">Shop by Frame Shape</h2>
+            <Link to="/shop" className="text-secondary font-semibold flex items-center hover:text-primary dark:hover:text-white transition-colors">
               View All <ChevronRight size={16} />
             </Link>
           </div>
@@ -167,10 +167,10 @@ const Home = () => {
               { name: 'Aviator', img: 'https://images.unsplash.com/photo-1589156229687-496a31ad1d1f?auto=format&fit=crop&q=80&w=200' }
             ].map((shape, idx) => (
               <Link to={`/shop?frameShape=${shape.name}`} key={idx} className="flex-none w-32 group">
-                <div className="bg-gray-50 rounded-lg p-4 mb-3 border border-gray-100 group-hover:border-secondary transition-colors">
-                  <img src={shape.img} alt={shape.name} className="w-full h-auto mix-blend-multiply" />
+                <div className="bg-gray-50 dark:bg-[#1a1a1a] rounded-lg p-4 mb-3 border border-gray-100 dark:border-[#333] group-hover:border-secondary transition-colors">
+                  <img src={shape.img} alt={shape.name} className="w-full h-auto mix-blend-multiply dark:mix-blend-normal rounded" />
                 </div>
-                <p className="text-center text-sm font-semibold text-gray-700 group-hover:text-primary">{shape.name}</p>
+                <p className="text-center text-sm font-semibold text-gray-700 dark:text-gray-300 group-hover:text-primary dark:group-hover:text-secondary">{shape.name}</p>
               </Link>
             ))}
           </div>
@@ -178,21 +178,21 @@ const Home = () => {
       </section>
 
       {/* Trending Products Slider */}
-      <section className="py-16 bg-gray-50 border-y border-gray-200">
+      <section className="py-16 bg-gray-50 dark:bg-[#121212] border-y border-gray-200 dark:border-[#333]">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-end mb-10">
             <div>
-              <h2 className="text-3xl font-bold text-primary mb-2">Trending Right Now</h2>
-              <p className="text-gray-500">Explore our most popular and newly arrived eyewear.</p>
+              <h2 className="text-3xl font-bold text-primary dark:text-secondary mb-2">Trending Right Now</h2>
+              <p className="text-gray-500 dark:text-gray-400">Explore our most popular and newly arrived eyewear.</p>
             </div>
-            <Link to="/shop" className="hidden md:flex text-white bg-primary px-6 py-2 rounded-full font-semibold hover:bg-secondary transition-colors items-center">
+            <Link to="/shop" className="hidden md:flex text-white bg-primary dark:bg-secondary dark:text-dark px-6 py-2 rounded-full font-semibold hover:bg-secondary dark:hover:bg-white transition-colors items-center">
               Explore All <ChevronRight size={18} className="ml-1" />
             </Link>
           </div>
 
           {loading ? (
             <div className="flex justify-center items-center h-64">
-              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div>
+              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary dark:border-secondary"></div>
             </div>
           ) : (
             <div className="flex overflow-x-auto pb-8 space-x-6 hide-scrollbar snap-x">
@@ -207,49 +207,49 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-[#0a0a0a]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Why Choose Sandeep Opticals?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary dark:text-white mb-4">Why Choose Sandeep Opticals?</h2>
             <div className="w-24 h-1 bg-secondary mx-auto"></div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="flex flex-col items-center text-center p-6">
-              <div className="w-16 h-16 bg-primary text-silver rounded-full flex items-center justify-center mb-6 shadow-lg">
+            <div className="flex flex-col items-center text-center p-6 bg-gray-50 dark:bg-[#1a1a1a] rounded-2xl border border-gray-100 dark:border-[#333] hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 bg-primary dark:bg-secondary text-silver dark:text-dark rounded-full flex items-center justify-center mb-6 shadow-lg">
                 <Clock size={32} />
               </div>
-              <h3 className="text-xl font-bold text-dark mb-3">25+ Years Experience</h3>
-              <p className="text-gray-600">A legacy of trust and excellence in eye care serving the community of Mulayam Nagar.</p>
+              <h3 className="text-xl font-bold text-dark dark:text-white mb-3">25+ Years Experience</h3>
+              <p className="text-gray-600 dark:text-gray-400">A legacy of trust and excellence in eye care serving the community of Mulayam Nagar.</p>
             </div>
             
-            <div className="flex flex-col items-center text-center p-6">
-              <div className="w-16 h-16 bg-primary text-silver rounded-full flex items-center justify-center mb-6 shadow-lg">
+            <div className="flex flex-col items-center text-center p-6 bg-gray-50 dark:bg-[#1a1a1a] rounded-2xl border border-gray-100 dark:border-[#333] hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 bg-primary dark:bg-secondary text-silver dark:text-dark rounded-full flex items-center justify-center mb-6 shadow-lg">
                 <Eye size={32} />
               </div>
-              <h3 className="text-xl font-bold text-dark mb-3">Computerized Testing</h3>
-              <p className="text-gray-600">State-of-the-art equipment for precise vision consultation and prescription.</p>
+              <h3 className="text-xl font-bold text-dark dark:text-white mb-3">Computerized Testing</h3>
+              <p className="text-gray-600 dark:text-gray-400">State-of-the-art equipment for precise vision consultation and prescription.</p>
             </div>
 
-            <div className="flex flex-col items-center text-center p-6">
-              <div className="w-16 h-16 bg-primary text-silver rounded-full flex items-center justify-center mb-6 shadow-lg">
+            <div className="flex flex-col items-center text-center p-6 bg-gray-50 dark:bg-[#1a1a1a] rounded-2xl border border-gray-100 dark:border-[#333] hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 bg-primary dark:bg-secondary text-silver dark:text-dark rounded-full flex items-center justify-center mb-6 shadow-lg">
                 <ShieldCheck size={32} />
               </div>
-              <h3 className="text-xl font-bold text-dark mb-3">Premium Quality</h3>
-              <p className="text-gray-600">We offer top brands and the highest quality lenses including Blue Cut and Progressive.</p>
+              <h3 className="text-xl font-bold text-dark dark:text-white mb-3">Premium Quality</h3>
+              <p className="text-gray-600 dark:text-gray-400">We offer top brands and the highest quality lenses including Blue Cut and Progressive.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-secondary text-light">
+      <section className="py-20 bg-secondary dark:bg-[#1a1a1a] text-light border-t border-secondary dark:border-[#333]">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Need a Contact Lens Consultation?</h2>
-          <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary dark:text-secondary">Need a Contact Lens Consultation?</h2>
+          <p className="text-lg text-gray-800 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
             Our specialists can help you find the perfect daily, monthly, or yearly disposable lenses tailored to your eyes.
           </p>
-          <Link to="/book-eye-test" className="bg-silver text-dark px-8 py-4 rounded-md font-bold hover:bg-white transition duration-300 shadow-xl">
+          <Link to="/book-eye-test" className="bg-primary dark:bg-secondary text-white dark:text-dark px-8 py-4 rounded-full font-bold hover:bg-dark dark:hover:bg-white transition duration-300 shadow-xl inline-block">
             Schedule an Appointment
           </Link>
         </div>
